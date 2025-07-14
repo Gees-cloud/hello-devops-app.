@@ -1,4 +1,4 @@
-//{
+{
   "name": "hello-devops",
   "version": "1.0.0",
   "description": "A simple Node.js app for DevOps CI/CD pipeline",
