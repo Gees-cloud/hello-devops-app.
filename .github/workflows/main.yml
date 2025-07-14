@@ -8,7 +8,7 @@ on:
 env:
   ECR_REPOSITORY: hello-node-app # Name of your Docker image repository in ECR (we'll create this soon)
   AWS_REGION: us-east-1 # Your AWS region where EC2 and ECR are (e.g., us-east-1, eu-west-1)
-  EC2_INSTANCE_IP:3.94.53.176  # IMPORTANT: Replace with YOUR EC2 instance's PUBLIC IP (check AWS console)
+  EC2_INSTANCE_IP: 3.94.53.176 # IMPORTANT: Replace with YOUR EC2 instance's PUBLIC IP (check AWS console)
   SSH_USER: ec2-user # Default user for Amazon Linux AMIs
 
 jobs:
