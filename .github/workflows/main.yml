@@ -45,18 +45,18 @@ jobs:
           username: ${{ env.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }} # We'll add this secret soon!
           script: |
-          # Log in to ECR from the EC2 instance
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
+            # Log in to ECR from the EC2 instance
+            aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
 
-          # Stop and remove the old container if it's running or exists
-          docker stop hello-node-app || true
-          docker rm hello-node-app || true
+            # Stop and remove the old container if it's running or exists
+            docker stop hello-node-app || true
+            docker rm hello-node-app || true
 
-          # Pull the latest Docker image (now authenticated)
-          docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+            # Pull the latest Docker image (now authenticated)
+            docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
 
-          # Run the new container, mapping port 80 to 3000
-          docker run -d -p 80:3000 --name hello-node-app ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+            # Run the new container, mapping port 80 to 3000
+            docker run -d -p 80:3000 --name hello-node-app ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
             
             # Login to ECR on EC2
             aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
